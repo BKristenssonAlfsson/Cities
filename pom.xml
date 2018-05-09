@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>se.yrgo.jee</groupId>
+  <artifactId>Projekt_Serverprogrammering</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Liselotte och Bjorn projekt</name>
+  <url>http://maven.apache.org</url>
+  <description>Bjorn and Liselottes Java EE server programming project. Will be about adding cities</description>
+
+	<developers>
+		<developer>
+  			<name>Bjorn Kristensson Alfsson</name>
+  	</developer>
+
+  	<developer>
+  	   <name>Liselotte Jakobsson</name>
+  	</developer>
+  </developers>
+
+  	<organization>
+  		  <name>YRGO</name>
+  	</organization>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-feature-pack</artifactId>
+            <version>12.0.0.Final</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.2.1.Final</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                  <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+              </executions>
+                  <configuration>
+                      <artifactItems>
+                          <artifactItem>
+                              <type>jar</type>
+                              <overWrite>true</overWrite>
+                              <outputDirectory>c:\wildfly12\standalone\deployments</outputDirectory>
+                              <destFileName>Cities.jar</destFileName>
+                          </artifactItem>
+                      </artifactItems>
+                      <overWriteSnapshots>true</overWriteSnapshots>
+                      <source>${maven.compiler.source}</source>
+                      <target>${maven.compiler.target}</target>
+                  </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
+</project>
