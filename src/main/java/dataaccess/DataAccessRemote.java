@@ -1,10 +1,10 @@
 package java.dataaccess;
 
+import javax.ejb.*;
 import java.util.List;
 import java.domain.City;
 
-public interface DataAccessRemote {
-  public void addCity(City city);
-  public void removeCity(City city);
-  public List showAllCities();
+@Remote
+public interface DataAccessRemote extends DataAccessLocal {
+
 }

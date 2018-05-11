@@ -4,7 +4,7 @@
 
   <groupId>se.yrgo.jee</groupId>
   <artifactId>Projekt_Serverprogrammering</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>ear</packaging>
 
   <name>Liselotte och Bjorn projekt</name>
@@ -40,6 +40,12 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.jboss.modules</groupId>
+            <artifactId>jboss-modules</artifactId>
+            <version>1.8.3.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,28 +59,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
-                <executions>
-                  <execution>
-                                <phase>install</phase>
-                                <goals>
-                                    <goal>deploy</goal>
-                                </goals>
-                            </execution>
-              </executions>
-                  <configuration>
-                      <artifactItems>
-                          <artifactItem>
-                              <type>jar</type>
-                              <overWrite>true</overWrite>
-                              <outputDirectory>c:\wildfly12\standalone\deployments</outputDirectory>
-                              <destFileName>Cities.jar</destFileName>
-                          </artifactItem>
-                      </artifactItems>
-                      <overWriteSnapshots>true</overWriteSnapshots>
-                      <source>${maven.compiler.source}</source>
-                      <target>${maven.compiler.target}</target>
-                  </configuration>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
