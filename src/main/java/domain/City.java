@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Table(name="cities")
 public class City implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name="id")
