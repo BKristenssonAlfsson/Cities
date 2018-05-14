@@ -16,7 +16,7 @@ public class TransactionsImplementation implements CityDataAccessInterface {
 
     @Override
     public void addCity(City city) {
-
+      em.persist(city);
     }
 
     @Override
