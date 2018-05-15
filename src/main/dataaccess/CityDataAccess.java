@@ -1,12 +1,12 @@
-package java.dataaccess;
+package dataaccess;
 
 import javax.annotation.*;
 import javax.ejb.*;
 import javax.inject.*;
 import java.util.*;
 
-import java.domain.City;
-import java.transactions.CityDataAccessInterface;
+import domain.City;
+import transactions.CityDataAccessInterface;
 
 @Stateless
 public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
@@ -23,4 +23,13 @@ public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
   public List showAllCities() {
     return cda.showAllCities();
   }
+
+  public String getCityById(int id) {
+    return null;
+  }
+
+  public List getCitiesBetweenMinMaxPopulation() {
+    return null;
+  }
+
 }

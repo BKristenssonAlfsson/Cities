@@ -5,7 +5,7 @@
   <groupId>se.yrgo.jee</groupId>
   <artifactId>Projekt_Serverprogrammering</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>ear</packaging>
+  <packaging>war</packaging>
 
   <name>Liselotte och Bjorn projekt</name>
   <url>http://maven.apache.org</url>
@@ -49,6 +49,7 @@
     </dependencies>
 
     <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>

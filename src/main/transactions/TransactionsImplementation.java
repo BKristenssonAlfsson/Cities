@@ -1,11 +1,11 @@
-package java.transactions;
+package transactions;
 
 import javax.ejb.*;
 import javax.enterprise.inject.Default;
 import javax.persistence.*;
 import java.util.*;
 
-import java.domain.City;
+import domain.City;
 
 @Stateless
 @Default
@@ -21,11 +21,20 @@ public class TransactionsImplementation implements CityDataAccessInterface {
 
     @Override
     public void removeCity(City city) {
-
+      
     }
 
     @Override
     public List showAllCities() {
+      return null;
+    }
+
+    @Override
+    public String getCityById(int id) {
+      return null;
+    }
+
+    public List getCitiesBetweenMinMaxPopulation(){
       return null;
     }
 }
