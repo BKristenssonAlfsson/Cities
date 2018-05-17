@@ -12,7 +12,7 @@ import transactions.CityDataAccessInterface;
 public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
 
   @Inject
-  private CityDataAccess cda;
+  private CityDataAccessInterface cda;
 
   public void addCity(City city) {
     cda.addCity(city);
@@ -20,15 +20,15 @@ public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
   public void removeCity(City city) {
     cda.removeCity(city);
   }
-  public List showAllCities() {
+  public List<City> showAllCities() {
     return cda.showAllCities();
   }
 
   public String getCityById(int id) {
-    return null;
+    return cda.getCityById(id);
   }
 
-  public List getCitiesBetweenMinMaxPopulation() {
+  public List<City> getCitiesBetweenMinMaxPopulation() {
     return null;
   }
 
