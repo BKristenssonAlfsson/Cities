@@ -22,25 +22,25 @@ public class TransactionsImplementation implements CityDataAccessInterface {
 
     @Override
     public void removeCity(City city) {
-      
+      //To be implemented
     }
 
     @Override
-    public List showAllCities() {
-		Query q = em.createNativeQuery("SELECT * FROM cities", City.class);
+    public List<City> showAllCities() {
+		Query q = em.createNativeQuery("SELECT * FROM cities;", City.class);
 		List<City> cities = q.getResultList();
 		return cities;
     }
 
     @Override
     public String getCityById(int id) {
-    	Query q = em.createNativeQuery("SELECT * FROM cities WHERE id = :number", City.class);
+    	Query q = em.createNativeQuery("SELECT * FROM cities WHERE id = :number;", City.class);
     	q.setParameter("number", number);
     	List<City> result = q.getResultList();
     	return result.toString();
     }
 
-    public List getCitiesBetweenMinMaxPopulation(){
+    public List<City> getCitiesBetweenMinMaxPopulation(){
       return null;
     }
 }

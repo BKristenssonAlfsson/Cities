@@ -10,7 +10,7 @@ import domain.City;
 
 @Stateless
 @Path("/city")
-public class CityResource{
+public class CityResource extends Application{
 	
   public CityResource() {}
 
@@ -18,7 +18,7 @@ public class CityResource{
   private DataAccessLocal dal;
 
   @GET
-  @Produces({"application/JSON", "application/XML"})
+  @Produces({"application/JSON"})
   @Path("{cityId}")
   public Response findcityById( @PathParam("cityId") int id ) {
     try {
@@ -28,9 +28,9 @@ public class CityResource{
       return Response.status(403).build();
     }
   }
-  /*
+  
   @GET
-  @Produces({"application/JSON", "application/XML"})
+  @Produces({"application/JSON"})
   public Response showAllCities() {
 	  try {
 		  List<City> result = dal.showAllCities();
@@ -38,5 +38,5 @@ public class CityResource{
 	  } catch ( Exception e ) {
 		  return Response.status(425).build();
 	  }
-  }*/
+  }
 }

@@ -6,5 +6,6 @@
             <servlet-mapping>
             	<servlet-name>javax.ws.rs.core.Application</servlet-name>
             	<url-pattern>/cities/*</url-pattern>
-            </servlet-mapping>               
+            </servlet-mapping>
+               
 </web-app>
