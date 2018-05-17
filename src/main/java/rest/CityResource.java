@@ -1,5 +1,7 @@
 package rest;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -10,7 +12,7 @@ import domain.City;
 
 @Stateless
 @Path("/city")
-public class CityResource extends Application{
+public class CityResource{
 	
   public CityResource() {}
 

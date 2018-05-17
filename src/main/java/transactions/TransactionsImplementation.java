@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.*;
 
 import domain.City;
-import se.yrgo.bjorn.elements.domain.Elements;
 
 @Stateless
 @Default
@@ -27,15 +26,15 @@ public class TransactionsImplementation implements CityDataAccessInterface {
 
     @Override
     public List<City> showAllCities() {
-		Query q = em.createNativeQuery("SELECT * FROM cities;", City.class);
+		Query q = em.createNativeQuery("SELECT * FROM cities", City.class);
 		List<City> cities = q.getResultList();
 		return cities;
     }
 
     @Override
     public String getCityById(int id) {
-    	Query q = em.createNativeQuery("SELECT * FROM cities WHERE id = :number;", City.class);
-    	q.setParameter("number", number);
+    	Query q = em.createNativeQuery("SELECT * FROM cities WHERE id = :number", City.class);
+    	q.setParameter("number", id);
     	List<City> result = q.getResultList();
     	return result.toString();
     }
