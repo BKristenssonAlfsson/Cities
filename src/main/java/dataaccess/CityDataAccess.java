@@ -5,7 +5,7 @@ import javax.ejb.*;
 import javax.inject.*;
 import java.util.*;
 
-import domain.City;
+import domain.Cities;
 import transactions.CityDataAccessInterface;
 
 @Stateless
@@ -14,23 +14,27 @@ public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
   @Inject
   private CityDataAccessInterface cda;
 
-  public void addCity(City city) {
+  public void addCity(Cities city) {
     cda.addCity(city);
   }
-  public void removeCity(City city) {
+  public void removeCity(String city) {
     cda.removeCity(city);
   }
-  public List<City> showAllCities() {
+  public List<Cities> showAllCities() {
     return cda.showAllCities();
   }
 
-  public String getCityById(int id) {
-    return cda.getCityById(id);
+  public String getCityByName(String name) {
+    return cda.getCityByName(name);
   }
 
-  public List<City> getCitiesBetweenMinMaxPopulation() {
+  public List<Cities> getCitiesBetweenMinMaxPopulation() {
 	  //To be implemented
     return null;
+  }
+
+  public void updateCity(String name, String newName, Integer population) {
+	cda.updateCity(name, newName, population);
   }
 
 }

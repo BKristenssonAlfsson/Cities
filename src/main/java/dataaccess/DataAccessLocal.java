@@ -3,13 +3,14 @@ package dataaccess;
 import java.util.*;
 import javax.ejb.*;
 
-import domain.City;
+import domain.Cities;
 
 @Local
 public interface DataAccessLocal {
-  public void addCity(City city);
-  public void removeCity(City city);
-  public List<City> showAllCities();
-  public String getCityById(int id);
-  public List<City> getCitiesBetweenMinMaxPopulation();
+  public void addCity(Cities city);
+  public void removeCity(String name);
+  public List<Cities> showAllCities();
+  public String getCityByName(String name);
+  public List<Cities> getCitiesBetweenMinMaxPopulation();
+public void updateCity(String name, String newName, Integer population);
 }

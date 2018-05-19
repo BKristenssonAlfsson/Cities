@@ -1,11 +1,14 @@
 package transactions;
 
-import javax.ejb.*;
-import javax.enterprise.inject.Default;
-import javax.persistence.*;
-import java.util.*;
+import java.util.List;
 
-import domain.City;
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import domain.Cities;
 
 @Stateless
 @Default
@@ -15,31 +18,47 @@ public class TransactionsImplementation implements CityDataAccessInterface {
     private EntityManager em;
 
     @Override
-    public void addCity(City city) {
-      em.persist(city);
+    public void addCity(Cities city) {
+    	em.persist(city);
+    	em.flush();
     }
 
     @Override
-    public void removeCity(City city) {
-      //To be implemented
+    public void removeCity(String name) {
+		Query q = em.createNativeQuery("DELETE FROM cities WHERE name = :city", Cities.class);
+		q.setParameter("city", name).executeUpdate();
     }
 
     @Override
-    public List<City> showAllCities() {
-		Query q = em.createNativeQuery("SELECT * FROM cities", City.class);
-		List<City> cities = q.getResultList();
+    public List<Cities> showAllCities() {
+		Query q = em.createNativeQuery("SELECT * FROM cities", Cities.class);
+		List<Cities> cities = q.getResultList();
 		return cities;
     }
 
     @Override
-    public String getCityById(int id) {
-    	Query q = em.createNativeQuery("SELECT * FROM cities WHERE id = :number", City.class);
-    	q.setParameter("number", id);
-    	List<City> result = q.getResultList();
+    public String getCityByName(String name) {
+    	Query q = em.createNativeQuery("SELECT * FROM cities WHERE name = :city", Cities.class);
+    	q.setParameter("city", name);
+    	List<Cities> result = q.getResultList();
     	return result.toString();
     }
 
-    public List<City> getCitiesBetweenMinMaxPopulation(){
+    public List<Cities> getCitiesBetweenMinMaxPopulation(){
       return null;
     }
+
+	public Cities findByCityName(String name) {
+		Query q = em.createNativeQuery("SELECT * FROM cities WHERE name= :city", Cities.class);
+		q.setParameter("city", name);
+		return (Cities)q.getSingleResult();
+		
+	}
+    
+	@Override
+	public void updateCity(String name, String newName, Integer population) {
+		Cities e = findByCityName(name);
+		e.setName(newName);
+		e.setPopulation(population);
+	}
 }

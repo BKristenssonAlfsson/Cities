@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class City implements Serializable {
+public class Cities implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -19,12 +19,20 @@ public class City implements Serializable {
   @Column(name="population")
   private int population;
 
-  public City() {}
+  public Cities() {}
 
-  public City(String name, int population) {
+  public Cities(String name, int population) {
     this.name = name;
     this.population = population;
   }
+  
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
   public String getCityName() {
     return name;
@@ -32,6 +40,14 @@ public class City implements Serializable {
 
   public int getPopulation() {
     return population;
+  }
+  
+  public void setName(String name) {
+	  this.name = name;
+  }
+  
+  public void setPopulation(int population) {
+	  this.population = population;
   }
 
   public String toString() {
