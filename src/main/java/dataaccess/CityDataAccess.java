@@ -28,9 +28,8 @@ public class CityDataAccess implements DataAccessLocal, DataAccessRemote {
     return cda.getCityByName(name);
   }
 
-  public List<Cities> getCitiesBetweenMinMaxPopulation() {
-	  //To be implemented
-    return null;
+  public List<Cities> getCitiesBetweenMinMaxPopulation(String min, String max) {
+    return cda.getCitiesBetweenMinMaxPopulation(min, max);
   }
 
   public void updateCity(String name, String newName, Integer population) {

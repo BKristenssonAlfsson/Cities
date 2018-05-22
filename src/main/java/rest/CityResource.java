@@ -65,7 +65,7 @@ public class CityResource{
   
   @DELETE
   @Path("{city}")
-  public Response deleteEmployee( @PathParam("city") String name) {
+  public Response deleteCity( @PathParam("city") String name) {
 	  try {
 		  dal.removeCity(name);
 		  return Response.status(200).build();

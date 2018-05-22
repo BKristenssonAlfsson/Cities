@@ -44,8 +44,12 @@ public class TransactionsImplementation implements CityDataAccessInterface {
     	return result.toString();
     }
 
-    public List<Cities> getCitiesBetweenMinMaxPopulation(){
-      return null;
+    public List<Cities> getCitiesBetweenMinMaxPopulation(String min, String max){
+      Query q = em.createNativeQuery("SELECT * FROM cities WHERE population >= :minimum AND population <= :maximum", Cities.class);
+      q.setParameter("minimum", min);
+      q.setParameter("maximum", max);
+      List<Cities> result = q.getResultList();
+      return result;
     }
 
 	public Cities findByCityName(String name) {
